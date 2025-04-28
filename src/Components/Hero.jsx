@@ -37,14 +37,15 @@ export default function Hero() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50">
       {/* Navigation Bar */}
-      <header className="relative bg-gray-50">
+      <header className="relative bg-gray-100">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex items-center">
-            <a href="#" className="text-2xl font-bold text-gray-900">
-              snowCap
-            </a>
+          <div className="snowcap-container">
+      <h1 className="snowcap-text">S N O W C A P</h1>
+      <p className="tagline">Where the cold meets the sky in perfect harmony.</p>
+    </div>
           </div>
           <div className="flex gap-x-5 underline underline-offset-2">
            
@@ -79,7 +80,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left Side: Large Image */}
             <div className="col-span-1 lg:col-span-1">
-              <a className="relative" href={`/product/${topDiscountedProducts[0]?.id}`}>
+              <a className="relative " href={`/product/${topDiscountedProducts[0]?.id}`} >
                 <img
                   src={topDiscountedProducts[0]?.images[0] || 'https://dummyjson.com/image/200x100'} // First image from images array
                   alt={topDiscountedProducts[0]?.title || 'Product Image'}
@@ -114,7 +115,7 @@ export default function Hero() {
         </div>
       </main>
 
-      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+      <div className="mx-auto bg-gray-50 max-w-7xl px-6 py-8 lg:px-8">
         <div className="flex justify-center gap-x-4">
           {categories.map((category) => (
             <button
