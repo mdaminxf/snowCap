@@ -63,7 +63,7 @@ export default function SideBar() {
   }
   const handleSearch = () => {
     const searchInput = document.querySelector('input[type="text"]').value;
-    navigate(`/?search=${searchInput}`);
+    navigate(`/products/${searchInput}`);
   };
   return (
     <div>
