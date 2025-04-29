@@ -39,7 +39,7 @@ const HeroBanner = () => {
       className="relative h-64 bg-yellow-300 flex justify-center items-center text-center text-white"
       style={{
         backgroundImage: 'url(https://a.media-amazon.com/images/G/31/prime/MayART/header/New/AMAZON-PRIME-MAY-ART-PC-HEADER-1_4_1.gif)',
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
