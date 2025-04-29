@@ -3,6 +3,7 @@ import { FaStar, FaShoppingCart, FaStarHalfAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { useCart } from "../Components/CartContext";
 import SideBar from "../Components/SideBar";
+import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -50,7 +51,11 @@ const ProductDetail = () => {
   }
 
   return (
+    <>
+          <SideBar />
+
     <div className="container mx-auto px-4 py-8">
+      
       <div className="bg-white rounded-lg shadow-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Carousel */}
         <div className="w-full relative">
@@ -62,18 +67,23 @@ const ProductDetail = () => {
                 className="w-full h-[400px] object-contain rounded-lg"
               />
               {/* Next/Previous Buttons */}
+             {product.images.length > 1 && (
+              <>
+              
               <button
                 onClick={handlePrevImage}
                 className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
               >
-                Prev
+                <ArrowBigLeft />
               </button>
               <button
                 onClick={handleNextImage}
                 className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
               >
-                Next
+                <ArrowBigRight />
               </button>
+              </>
+             )}
             </div>
           )}
         </div>
@@ -210,8 +220,8 @@ const ProductDetail = () => {
           </div>
         </div>
       )}
-      <SideBar />
     </div>
+    </>
   );
 };
 

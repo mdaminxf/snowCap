@@ -1,16 +1,30 @@
 // SideBar.js
 import { useState, useEffect } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
+import { ChevronLeft, ChevronRight, Search, User, ShoppingCart, Package } from 'lucide-react';
+
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useCart } from './CartContext';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 export default function SideBar() {
   const { cart, removeFromCart } = useCart();
   const [products, setProducts] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]= useState(false);
   const navigate = useNavigate();
+  const [isSticky, setIsSticky] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   useEffect(() => {
     fetch('https://dummyjson.com/products')
       .then((response) => {
@@ -33,24 +47,38 @@ export default function SideBar() {
   };
 
   return (
-    <div className={open ? 'hidden' : 'block'}>
-      <div className="fixed z-50 bottom-10 right-8 bg-blue-600 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-blue-700 hover:drop-shadow-2xl">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          onClick={() => setOpen(true)}
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6 cursor-pointer"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-          />
-        </svg>
-
+    <div>
+      <header
+      className={`${
+        isSticky ? 'sticky top-0 z-50 shadow-lg' : ''
+      } bg-gradient-to-r from-sky-500 via-violet-500 to-blue-500 text-gray-700 p-4 flex flex-col md:flex-row justify-between items-center gap-2 transition-shadow duration-300`}
+    >
+      <div className="text-xl font-bold text-white flex items-center gap-2">
+        <a href='/'>SNOWCAP</a>
+      </div>
+      <div className="relative w-full md:w-1/2">
+        <input
+          type="text"
+          placeholder="Search Products..."
+          className="w-full px-4 py-2 text-black rounded"
+        />
+        <Search className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
+      </div>
+      <div className="flex space-x-4 text-sm text-white items-center">
+        <a href="/account" className="hover:underline flex items-center gap-1">
+          <User size={16} /> Account
+        </a>
+        <a href="/checkout" className="hover:underline flex items-center gap-1">
+          <Package size={16} /> Orders
+        </a>
+        <a href="#" 
+         onClick={() => setOpen(true)}
+        className="hover:underline flex items-center gap-1">
+          <ShoppingCart size={16} /> Cart
+        </a>
+      </div>
+    </header>
+      
         <Dialog open={open} onClose={() => setOpen(false)} className="relative z-10">
           <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 
@@ -155,7 +183,7 @@ export default function SideBar() {
             </div>
           </div>
         </Dialog>
-      </div>
+     
     </div>
   );
 }
