@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useCart } from "../Components/CartContext";
 import SideBar from "../Components/SideBar";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import Footer from "../Components/Footer";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -220,7 +221,9 @@ const ProductDetail = () => {
           </div>
         </div>
       )}
+      
     </div>
+    <Footer />
     </>
   );
 };

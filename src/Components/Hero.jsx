@@ -59,6 +59,7 @@ const HomePage = () => {
   }, []);
 
   return (
+    
     <div className="bg-gray-200 min-h-screen">
       <HeroBanner />
       <main className="max-w-7xl mx-auto py-4">

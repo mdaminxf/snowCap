@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import SideBar from '../Components/SideBar';
+import Footer from '../Components/Footer';
 
 const CheckOut = () => {
   const [products, setProducts] = useState([]);
@@ -68,6 +70,8 @@ const CheckOut = () => {
   };
 
   return (
+    <>
+    <SideBar />
     <div className="font-sans min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="max-w-5xl w-full bg-white shadow-2xl rounded-lg overflow-hidden">
         <div className="md:flex">
@@ -175,6 +179,8 @@ const CheckOut = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

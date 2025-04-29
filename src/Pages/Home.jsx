@@ -6,6 +6,7 @@ const Home = () => {
  
   return (
     <div>
+      <SideBar />
       <Hero />
       <Footer />
     </div>
