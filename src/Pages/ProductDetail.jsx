@@ -190,7 +190,7 @@ const ProductDetail = () => {
                 <p className="text-green-600 font-semibold mt-2">
                   ${items.price?.toFixed(2)}
                 </p>
-                {cart.some((item) => item.id === items.id) ? (
+                {/* {cart.some((item) => item.id === items.id) ? (
                   <div className="relative flex items-center">
                     <button
                       className="bg-white hover:bg-blue-200 border border-blue-300 rounded-l-lg p-2 h-10"
@@ -215,7 +215,7 @@ const ProductDetail = () => {
                   >
                     Buy Me
                   </button>
-                )}
+                )} */}
               </div>
             ))}
           </div>
