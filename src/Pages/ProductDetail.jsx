@@ -176,8 +176,9 @@ const ProductDetail = () => {
           <h2 className="text-2xl font-semibold mb-4">Related Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {relatedProducts.map((items) => (
-              <div
+              <a
                 key={items.id}
+                href={`/product/${items.id}`} 
                 className="border rounded-lg p-4 hover:shadow-md transition bg-white"
               >
                 <img
@@ -216,7 +217,7 @@ const ProductDetail = () => {
                     Buy Me
                   </button>
                 )} */}
-              </div>
+              </a>
             ))}
           </div>
         </div>
